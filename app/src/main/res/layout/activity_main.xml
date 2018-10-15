@@ -8,9 +8,11 @@
 
     <TextureView
         android:id="@+id/textureView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/btnCapture"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btnCapture"
@@ -18,5 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Capture" />
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.sakhi.recycler.cameraFragment"
+        android:layout_width="match_parent"
+        android:layout_height="519dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
