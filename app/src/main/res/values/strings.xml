@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Recycler</string>
     <string name="upload">Button</string>
+    <string name="CameraScreen">Main2Activity</string>
+    <string name="all">All</string>
+    <string name="recycle">Recycle</string>
+    <string name="trash">Trash</string>
+
 </resources>

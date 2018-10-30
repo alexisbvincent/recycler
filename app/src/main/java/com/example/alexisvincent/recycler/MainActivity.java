@@ -1,61 +1,44 @@
 package com.example.alexisvincent.recycler;
 
-import android.app.ProgressDialog;
+
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.File;
+import android.widget.ImageButton;
 
 
 public class MainActivity extends AppCompatActivity {
-    private StorageReference mStorageRef;
-    private ProgressDialog mProgress;
-    private static int CAMERA_REQUEST_CODE = 1;
-    //private ImageView mImageView;
 
-    @Override
+    Button landfillB;
+    Button paper;
+    Button aluminum;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-        mProgress = new ProgressDialog(this);
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+
+        FloatingActionButton cameraB = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+
+        cameraB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Main2Activity.class));
+            }
+        });
 
 
+        ImageButton plasticB = (ImageButton) findViewById(R.id.imageButton);
+        plasticB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PlasticActivity.class));
+            }
+        });
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK){
-            mProgress.setMessage("Uploading Image...");
-            mProgress.show();
-            Uri uri = data.getData();
-
-            StorageReference filePath = mStorageRef.child("Photos").child(uri.getLastPathSegment());
-            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    mProgress.dismiss();
-                    Toast.makeText(MainActivity.this, "Uploading Finished...", Toast.LENGTH_LONG).show();
-                }
-            });
-        }
     }
-}
