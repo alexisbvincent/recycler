@@ -12,9 +12,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button landfillB;
-    Button paper;
-    Button aluminum;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +29,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ImageButton plasticB = (ImageButton) findViewById(R.id.imageButton);
+        ImageButton plasticB = (ImageButton) findViewById(R.id.imgB_plastic);
         plasticB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PlasticActivity.class));
+            }
+        });
+
+        ImageButton paperB = (ImageButton) findViewById(R.id.imgB_paper);
+        paperB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PlasticActivity.class));
+            }
+        });
+        ImageButton aluminumB = (ImageButton) findViewById(R.id.imgB_aluminum);
+        aluminumB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PlasticActivity.class));
+            }
+        });
+        ImageButton landfillB = (ImageButton) findViewById(R.id.imgB_landfill);
+        landfillB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PlasticActivity.class));

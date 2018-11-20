@@ -21,7 +21,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-        <activity android:name=".PlasticActivity"></activity>
+        <activity android:name=".PlasticActivity" />
+
+        <service
+            android:name=".MyNotificationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Paper" />
+        <activity android:name=".Aluminum" />
+        <activity android:name=".Landfill"></activity>
     </application>
 
 </manifest>
